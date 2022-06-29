@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightManager : MonoBehaviour
+public class Microphone : MonoBehaviour
 {
-    public Light[] lightToClignote;
     // Start is called before the first frame update
     void Start()
     {

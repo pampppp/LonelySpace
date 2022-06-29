@@ -31,20 +31,16 @@ public class Move : MonoBehaviour
         }
         else if (GetComponent<Player>().myStatus == Player.locomotionStatus.IN_VESSEL)
         {
-            //rb.velocity = Vector3.zero;
-
-            //rb.useGravity = true;
-            //direction.y = 0;
-            //rb.AddRelativeForce(Vector3.right * (moveSpeed * direction.x), ForceMode.VelocityChange);
+            
             GetComponent<Rigidbody>().transform.RotateAround(target.transform.position, transform.forward, direction.x * moveSpeed);
 
-            //rb.velocity = direction * moveSpeed;
         }
         else if (GetComponent<Player>().myStatus == Player.locomotionStatus.USINGLADDER)
         {
             rb.useGravity = false;
             rb.velocity = Vector3.zero;
-            transform.position += new Vector3(0, direction.y * moveSpeed, 0);
+            //transform.position += new Vector3(0, direction.y * moveSpeed, 0);
+            transform.position += transform.up * direction.y * moveSpeed;
         }
         else
         {

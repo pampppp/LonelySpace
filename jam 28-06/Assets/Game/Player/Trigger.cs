@@ -18,9 +18,11 @@ public class Trigger : MonoBehaviour
         {
             if (Input.GetAxis("Fire1") != 0)
             {
-                GetComponent<Action>().UseLadder();
+                GetComponent<Action>().UseLadder(other.gameObject);
             }
         }
+
+        
     }
     private void OnTriggerExit(Collider other)
     {
