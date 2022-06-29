@@ -13,16 +13,9 @@ public class Move : MonoBehaviour
     //fonction deplacement avec gravité
     private void Update()
     {
-         //if (GetComponent<Player>().myStatus == Player.locomotionStatus.IN_VESSEL)
-         //{
-         //   var lookPos = target.transform.position - transform.position;
-            
-         //   lookPos.y = 0;
+        // 
 
-         //   var rotation = Quaternion.LookRotation(lookPos);
-         //   transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 10);
-         //}
-            
+
     }
 
     public void Locomotion(Rigidbody rb, Vector3 direction, float moveSpeed)
@@ -38,9 +31,13 @@ public class Move : MonoBehaviour
         }
         else if (GetComponent<Player>().myStatus == Player.locomotionStatus.IN_VESSEL)
         {
+            //rb.velocity = Vector3.zero;
+
             //rb.useGravity = true;
             //direction.y = 0;
-            rb.AddRelativeForce(Vector3.right * (moveSpeed * direction.x), ForceMode.VelocityChange);
+            //rb.AddRelativeForce(Vector3.right * (moveSpeed * direction.x), ForceMode.VelocityChange);
+            GetComponent<Rigidbody>().transform.RotateAround(target.transform.position, transform.forward, direction.x * moveSpeed);
+
             //rb.velocity = direction * moveSpeed;
         }
         else if (GetComponent<Player>().myStatus == Player.locomotionStatus.USINGLADDER)
