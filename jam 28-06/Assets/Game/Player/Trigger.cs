@@ -21,8 +21,16 @@ public class Trigger : MonoBehaviour
                 GetComponent<Action>().UseLadder(other.gameObject);
             }
         }
-
-        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Diabox")
+        {
+            if (other.GetComponent<DialogueManager>().isActivable && Input.GetAxis("Fire1") != 0)
+                other.GetComponent<DialogueManager>().StartEvent();
+            else if (!other.GetComponent<DialogueManager>().isActivable)
+                other.GetComponent<DialogueManager>().StartEvent();
+        }
     }
     private void OnTriggerExit(Collider other)
     {

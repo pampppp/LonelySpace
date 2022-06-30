@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,5 @@ public class Camera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

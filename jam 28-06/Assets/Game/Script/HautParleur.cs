@@ -5,6 +5,7 @@ using UnityEngine;
 public class HautParleur : MonoBehaviour
 {
     public GameObject player;
+    public AudioClip[] soundList;
     float volumValue;
     // Start is called before the first frame update
     void Start()

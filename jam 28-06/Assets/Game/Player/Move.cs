@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    
+    public Animator animator;
     Vector3 dirPos;
     Vector3 dirRot;
     public GameObject target;
+    public GameObject cam;
 
-    //fonction deplacement sans gravité
-    //fonction deplacement avec gravité
+    private void Start()
+    {
+        //animator = GetComponent<Animator>();
+    }
     private void Update()
     {
         // 
+        animator.GetParameter(3).defaultBool = true;
 
 
     }
@@ -28,11 +32,16 @@ public class Move : MonoBehaviour
 
             rb.AddRelativeForce(Vector3.up * (moveSpeed * direction.y), ForceMode.Acceleration);
             rb.AddTorque(dirRot * -moveSpeed, ForceMode.Acceleration);
+            //cam.transform.LookAt(target.transform);
         }
         else if (GetComponent<Player>().myStatus == Player.locomotionStatus.IN_VESSEL)
         {
             
             GetComponent<Rigidbody>().transform.RotateAround(target.transform.position, transform.forward, direction.x * moveSpeed);
+            //cam.transform.RotateAround(target.transform.position, transform.forward, direction.x * moveSpeed);
+            animator.GetParameter(0).defaultFloat = direction.x * moveSpeed;
+            animator.GetParameter(3).defaultBool = true;
+
 
         }
         else if (GetComponent<Player>().myStatus == Player.locomotionStatus.USINGLADDER)
